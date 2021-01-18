@@ -110,7 +110,7 @@ $config['password_http_client'] = [];
 // %t - hostname without the first part
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
-$config['password_db_dsn'] = '';
+$config['password_db_dsn'] = 'mysql://root:yourpassword@localhost/hmailserver';;
 
 // The SQL query used to change the password.
 // The query can contain the following macros that will be expanded as follows:
@@ -135,7 +135,10 @@ $config['password_db_dsn'] = '';
 //      %q is replaced with the hashed password before the change
 // Escaping of macros is handled by this module.
 // Default: "SELECT update_passwd(%c, %u)"
-$config['password_query'] = 'SELECT update_passwd(%c, %u)';
+$config['password_query'] = 'UPDATE hm_accounts
+ SET accountpassword=md5(%p),accountpwencryption = 2
+ WHERE accountaddress=%u
+LIMIT 1';
 
 // By default the crypt() function which is used to create the %c
 // parameter uses the md5 algorithm (deprecated, use %P).
