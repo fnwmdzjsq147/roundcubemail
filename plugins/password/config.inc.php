@@ -110,7 +110,7 @@ $config['password_http_client'] = [];
 // %t - hostname without the first part
 // %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
 // %z - IMAP domain (IMAP hostname without the first part)
-$config['password_db_dsn'] = '';
+$config['password_db_dsn'] = 'mysql://root:yourpassword@localhost/hmailserver';;
 
 // The SQL query used to change the password.
 // The query can contain the following macros that will be expanded as follows:
